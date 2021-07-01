@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "code": "home",
+    "name": "首页",
+    "path": "/home",
+    "component": "Layout",
+    "icon": "home-outlined",
+    "hide": false,
+    "parentId": -1
+  },
+  {
+    "id": 2,
+    "code": "orderManage",
+    "name": "订单管理",
+    "path": "/orderManage",
+    "component": "Layout",
+    "icon": "api-outlined",
+    "hide": false,
+    "parentId": -1
+  }
+]

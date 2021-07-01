@@ -1,0 +1,91 @@
+@import './_flex.less';
+body {
+  color: #333;
+}
+::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+
+/* slide */
+.slide-leave-active,
+.slide-enter-active {
+  transition: all 0.3s ease;
+}
+.slide-enter-from {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #eee;
+  }
+  .page-title,
+  .split-line {
+    border-color: #232323;
+  }
+}
+
+//修改表格分页位置
+
+.page-control {
+  margin-bottom: 4px;
+  .space {
+    margin: 0 4px;
+  }
+}
+// 原子样式
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+.text-nowrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fr {
+  float: right;
+}
+.fl {
+  float: left;
+}
+.fn {
+  float: none;
+}
+.block {
+  display: block;
+}
+.flex {
+  display: flex;
+}
+.vertical-mid {
+  vertical-align: middle;
+}
+.vertical-top {
+  vertical-align: top;
+}
+.vertical-bottom {
+  vertical-align: bottom;
+}
+.vertical-baseline {
+  vertical-align: baseline;
+}
+.width-full {
+  width: 100%;
+}
+.text-primary {
+  color: #1b90ff;
+}
+.divider-primary {
+  background: @primary-color;
+}

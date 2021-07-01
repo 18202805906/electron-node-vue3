@@ -1,0 +1,95 @@
+.ant-form-item {
+  margin-bottom: 19px;
+  &.ant-form-item-with-help {
+    margin-bottom: 0;
+  }
+}
+
+.ant-btn.space {
+  margin-left: 4px;
+}
+// 弹框样式
+.ant-modal-header {
+  padding: 13px 24px;
+  background: linear-gradient(45deg, #1890ff 0%, #00479d 100%);
+  .ant-modal-title {
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+  }
+}
+.ant-modal-close {
+  right: 12px;
+  top: 12px;
+  color: #fff;
+  transition: transform 1s ease;
+  &:hover {
+    color: #fff;
+    transform: rotate(360deg);
+  }
+  .ant-modal-close-x {
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    img {
+      height: 24px;
+    }
+  }
+}
+.ant-modal-footer {
+  text-align: center;
+  button {
+    margin-right: 20px;
+  }
+}
+//设置边框圆滑度
+.ant-btn,
+.ant-input,
+.ant-select-selection,
+.ant-input-number {
+  border-radius: 2px;
+}
+
+.ant-input-search .ant-input {
+  width: 240px;
+  border-color: @primary-color;
+}
+
+//表格
+.ant-table-small > .ant-table-content > .ant-table-body {
+  margin: 0;
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > td {
+    border-bottom: 1px solid #e6f7ff;
+  }
+  .ant-table-thead {
+    background: #f5faff;
+    .ant-table-column-title {
+      font-weight: bold;
+    }
+  }
+  /*设置表格奇偶数列背景色不同*/
+  .ant-table-tbody > tr:nth-child(even) {
+    background: #fafafa;
+  }
+}
+.ant-table-small {
+  border: 1px solid #e6f7ff;
+  border-bottom: none;
+  opacity: 1;
+  border-radius: 1px;
+}
+.ant-table-pagination.ant-pagination {
+  float: none;
+  text-align: right;
+}
+.ant-pagination {
+  .ant-pagination-item-active {
+    background-color: #1890ff;
+    a {
+      color: #fff;
+    }
+  }
+}
