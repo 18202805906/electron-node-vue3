@@ -17,7 +17,6 @@ function createTray(win) {
   // eslint-disable-next-line no-undef
   const image = nativeImage.createFromPath(path.join(__static, 'images/trayTemplate.png'));
 
-  console.log(image);
   image.setTemplateImage(true);
   myGlobal._tray = new Tray(image); //系统托盘图标
   const menuTemplate = [

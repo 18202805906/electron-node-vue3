@@ -5,17 +5,17 @@ const IS_PRODUCTION = env.NODE_ENV === 'production';
 
 const apiHost = IS_PRODUCTION ? env.VUE_APP_API_HOST : env.VUE_APP_API_PREFIX;
 export default {
-  appTitle: '后台管理系统',
+  appTitle: '凯旭订单管理系统',
   appAuthor: '谢小前端',
   appVersion: APP.getVersion(),
   userPath: APP.getPath('userData'),
   homePath: APP.getPath('home'),
-  // git地址TODO
-  downloadUrl: '',
-  releaseUrl: '',
-  repositoryUrl: '',
-  issuesUrl: '',
-  docsUrl: '',
+  // git地址
+  downloadUrl: 'https://api.github.com/repos/18202805906/electron-node-vue3/releases',
+  releaseUrl: 'https://api.github.com/repos/18202805906/electron-node-vue3/releases/latest',
+  repositoryUrl: 'https://github.com/18202805906/electron-node-vue3',
+  issuesUrl: 'https://github.com/18202805906/electron-node-vue3/issues',
+  docsUrl: 'https://github.com//18202805906/electron-node-vue3',
   iconUrl: '/iconfont/iconfont.js',
   themeList: {
     system: {

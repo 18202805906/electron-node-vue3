@@ -21,6 +21,7 @@ export default defineComponent({
       const win = remote.getCurrentWindow();
       if (win.hegith != 680) {
         win.setSize(1500, 680);
+        win.center();
       }
     });
   }

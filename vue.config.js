@@ -22,7 +22,7 @@ module.exports = {
         //   publish: ['github']
         // },
         win: {
-          icon: './build/icons/icon.ico', // 应用文件图标
+          icon: './build/icons/icon.png', // 应用文件图标
           target: [{ target: 'nsis', arch: ['x64'] }],
           legalTrademarks: 'myProduction'
         },

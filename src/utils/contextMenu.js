@@ -27,7 +27,6 @@ export function contextmenu() {
   window.addEventListener(
     'contextmenu',
     (e) => {
-      console.log(e);
       e.preventDefault();
       m.popup({
         window: remote.getCurrentWindow()

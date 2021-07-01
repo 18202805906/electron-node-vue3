@@ -4,11 +4,7 @@ class SettingModel extends BaseModel {
     super();
   }
   getAll() {
-    console.log(this.db + 'xxxx');
-    console.log(this.db + '2232');
-    console.log('xxxx');
-    //return {}
-    //return this.db.read().get('setting').value();
+    return this.db.read().get('setting').value();
   }
   getOne(key) {
     let setting = this.getAll();

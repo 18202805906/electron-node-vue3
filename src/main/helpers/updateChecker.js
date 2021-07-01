@@ -5,9 +5,9 @@ import config from '@/config';
 const version = app.getVersion();
 const release = config.releaseUrl;
 const downloadUrl = config.downloadUrl;
-const checkVersion = async (isForce = false) => {
-  let showTip = SettingModel.getOne('autoUpdate');
-  if (isForce || showTip) {
+const checkVersion = async (isForce = true) => {
+  //let showTip = SettingModel.getOne('autoUpdate');
+  if (isForce) {
     console.log('检查更新...');
     try {
       const res = await axios.get(release, {
@@ -31,13 +31,12 @@ const checkVersion = async (isForce = false) => {
               if (response === 0) {
                 shell.openExternal(downloadUrl);
               }
-              if (checkboxChecked) {
-                SettingModel.update('autoUpdate', false);
-              }
+              // if (checkboxChecked) {
+              //   SettingModel.update('autoUpdate', false);
+              // }
             });
         } else {
-          console.log('当前没有可用的更新!');
-          isForce && showMsg('当前没有可用的更新!');
+          //isForce && showMsg('当前没有可用的更新!');
         }
       } else {
         throw new Error('无法连接更新服务器！');
