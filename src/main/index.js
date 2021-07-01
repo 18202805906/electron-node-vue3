@@ -1,5 +1,5 @@
 'use strict';
-import { app, protocol, BrowserWindow } from 'electron';
+import { app, protocol, BrowserWindow, dialog } from 'electron';
 import fixPath from 'fix-path';
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib';
 // import { autoUpdater } from 'electron-updater';
@@ -56,7 +56,6 @@ async function createWindow() {
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
     await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
-    updateChecker();
     // if (!process.env.IS_TEST) win.webContents.openDevTools();
   } else {
     createProtocol('app');
@@ -88,13 +87,14 @@ async function createWindow() {
 
 // 创建子进程
 function createServerProcess() {
+  console.log('dir', __dirname);
   let serverProcess;
   if (!isDevelopment) {
     // 生产环境
-    // serverProcess = fork('../../server/bin/www.js', [], {
-    //   cwd: path.join(__dirname, '../../server/bin/www.js')
+    // serverProcess = fork('../server/bin/www.js', [], {
+    //   cwd: path.join(__dirname, '../server')
     // });
-    serverProcess = fork(path.join(process.cwd(), '/resources/server/bin/www.js'));
+    serverProcess = fork(path.join(path.resolve(__dirname, '..'), '/server/bin/www.js'));
   } else {
     // 开发环境
     serverProcess = fork(require.resolve('../../server/bin/www.js'));

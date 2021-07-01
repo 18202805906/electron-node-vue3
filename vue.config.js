@@ -72,7 +72,7 @@ module.exports = {
         // extraFiles: ['./extensions/'],
       },
       mainProcessFile: 'src/main/index.js',
-      mainProcessWatch: ['src/main/**/*'],
+      mainProcessWatch: ['src/main/**/**'],
       // extraResources: [
       //   {
       //     from: '/server/**',

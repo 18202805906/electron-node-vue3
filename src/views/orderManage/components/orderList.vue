@@ -304,8 +304,8 @@ export default defineComponent({
         return isJpgOrPng && isLtM;
       },
       handleChange: (info) => {
-        loading.value = true;
         if (info.file.status === 'uploading') {
+          loading.value = true;
           return;
         }
         if (info.file.status === 'done') {
