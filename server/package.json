@@ -1,65 +1,65 @@
 {
-	"name": "spider-node",
-	"version": "1.0.0",
-	"private": true,
-	"description": "用于easy-post项目的后端支撑",
-	"bin": "bin/www",
-	"pkg": {
-		"scripts": [],
-		"assets": []
-	},
-	"scripts": {
-		"start": "nodemon --inspect --exec babel-node bin/www",
-		"dev": "nodemon bin/www",
-		"prd": "pm2 start bin/www",
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"build": "webpack  --config webpack.config.js"
-	},
-	"keywords": [
-		"spider-node"
-	],
-	"author": "xiezy",
-	"license": "ISC",
-	"dependencies": {
-		"@babel/runtime": "^7.14.6",
-		"@babel/runtime-corejs3": "^7.14.7",
-		"axios": "^0.21.1",
-		"debug": "^4.1.1",
-		"jsonwebtoken": "^8.5.1",
-		"koa": "^2.7.0",
-		"koa-bodyparser": "^4.2.1",
-		"koa-convert": "^1.2.0",
-		"koa-json": "^2.0.2",
-		"koa-jwt": "^3.6.0",
-		"koa-logger": "^3.2.0",
-		"koa-multer": "^1.0.2",
-		"koa-router": "^7.4.0",
-		"koa-static": "^5.0.0",
-		"koa2-cors": "^2.0.6",
-		"log4js": "^6.3.0",
-		"node-xlsx": "^0.16.1",
-		"mysql2": "^2.2.5",
-		"node-rsa": "^1.1.1",
-		"sequelize": "^6.6.2",
-		"sequelize-cli": "^6.2.0",
-		"svg-captcha": "^1.4.0"
-	},
-	"devDependencies": {
-		"@babel/cli": "^7.14.5",
-		"@babel/core": "^7.14.6",
-		"@babel/node": "^7.14.5",
-		"@babel/plugin-transform-runtime": "^7.14.5",
-		"@babel/preset-env": "^7.14.7",
-		"babel-eslint": "^10.1.0",
-		"babel-loader": "^8.2.2",
-		"babel-minify-webpack-plugin": "^0.3.1",
-		"captchapng": "0.0.1",
-		"clean-webpack-plugin": "^4.0.0-alpha.0",
-		"copy-webpack-plugin": "^9.0.1",
-		"inquirer": "^8.1.0",
-		"nodemon": "^1.19.1",
-		"webpack": "^4.46.0",
-		"webpack-cli": "^4.7.2",
-		"webpack-node-externals": "^3.0.0"
-	}
+  "name": "spider-node",
+  "version": "1.0.0",
+  "private": true,
+  "description": "用于项目的后端支撑",
+  "bin": "bin/www.js",
+  "pkg": {
+    "scripts": [],
+    "assets": []
+  },
+  "scripts": {
+    "start": "nodemon --inspect --exec babel-node bin/www",
+    "dev": "nodemon bin/www",
+    "prd": "pm2 start bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack  --config webpack.config.js"
+  },
+  "keywords": [
+    "spider-node"
+  ],
+  "author": "xiezy",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.14.6",
+    "@babel/runtime-corejs3": "^7.14.7",
+    "axios": "^0.21.1",
+    "debug": "^4.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-convert": "^1.2.0",
+    "koa-json": "^2.0.2",
+    "koa-jwt": "^3.6.0",
+    "koa-logger": "^3.2.0",
+    "koa-multer": "^1.0.2",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa2-cors": "^2.0.6",
+    "log4js": "^6.3.0",
+    "node-xlsx": "^0.16.1",
+    "mysql2": "^2.2.5",
+    "node-rsa": "^1.1.1",
+    "sequelize": "^6.6.2",
+    "sequelize-cli": "^6.2.0",
+    "svg-captcha": "^1.4.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
+    "@babel/node": "^7.14.5",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "babel-minify-webpack-plugin": "^0.3.1",
+    "captchapng": "0.0.1",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "inquirer": "^8.1.0",
+    "nodemon": "^1.19.1",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-node-externals": "^3.0.0"
+  }
 }

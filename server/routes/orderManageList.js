@@ -66,45 +66,77 @@ router.post('/importExcel/:orderId', multer().single('file'), async (ctx) => {
   //目前只获取第一个sheet中的内容
   const excelObj = obj[0].data;
   // 定义导入数据的实体类
-  const dataArray = new Array('trademark', 'panel', 'machineModel', 'power', 'model', 'nums', 'unitPrice', 'totalMoney', 'paymentType', 'orderDate', 'deliveryDate', 'remark');
+  const nameToFiled = {
+    商标: 'trademark',
+    面板: 'panel',
+    型号: 'machineModel',
+    功率: 'power',
+    机型: 'model',
+    数量: 'nums',
+    单价: 'unitPrice',
+    金额: 'totalMoney',
+    付款方式: 'paymentType',
+    下单日期: 'orderDate',
+    日期: 'orderDate',
+    交货日期: 'deliveryDate',
+    备注: 'remark'
+  };
+  //const dataArray = new Array('trademark', 'panel', 'machineModel', 'power', 'model', 'nums', 'unitPrice', 'totalMoney', 'paymentType', 'orderDate', 'deliveryDate', 'remark');
   //循环遍历表每一行的数据
   let isError = null;
   let allData = [];
-  for (let i = 1; i < excelObj.length; i++) {
-    let rdata = excelObj[i];
-    //将每一行的数据存进数据库中
-    let stu = { orderId };
-    for (let j = 0; j < rdata.length; j++) {
-      //进行数值类型判断
-      if (['power', 'nums', 'unitPrice', 'totalMoney'].includes(dataArray[j])) {
-        //如果有类型不正确的值。直接退出
-        if (rdata[j] && isNaN(Number(rdata[j]))) {
-          isError = excelObj[0][j];
-          break;
+  //存放表格字段
+  let fieldArr = [];
+  for (let i = 0; i < excelObj.length; i++) {
+    if (excelObj[i].length) {
+      if (!fieldArr.length) {
+        fieldArr = excelObj[i];
+        continue;
+      }
+      let rdata = excelObj[i];
+      let stu = { orderId };
+      //将每一行的数据存进数据库中
+      for (let j = 0; j < rdata.length; j++) {
+        //进行数值类型判断
+        if (['数量', '单价', '金额'].includes(fieldArr[j])) {
+          //如果有类型不正确的值。直接退出
+          if (rdata[j] && isNaN(Number(rdata[j]))) {
+            isError = fieldArr[j] + '不是数值类型，请检查后再导入';
+            break;
+          }
+        }
+        //时间格式判断
+        if (['日期', '交货日期', '下单日期'].includes(fieldArr[j])) {
+          if (!rdata[j]) {
+            isError = fieldArr[j] + '不能为空，请检查后再导入';
+            break;
+          }
+          //如果有类型不正确的值。直接退出
+          if (isNaN(Date.parse(rdata[j]))) {
+            isError = fieldArr[j] + '的日期格式有问题，请检查后再导入';
+            break;
+          }
+          rdata[j] = formate(new Date(1900, 0, rdata[j] - 1), 'yyyy-MM-dd hh:mm:ss');
+        }
+        if (nameToFiled[fieldArr[j]]) {
+          stu[nameToFiled[fieldArr[j]]] = rdata[j];
         }
       }
-      //时间格式判断
-      if (['orderDate', 'deliveryDate'].includes(dataArray[j])) {
-        //如果有类型不正确的值。直接退出
-        if (rdata[j] && isNaN(Date.parse(rdata[j]))) {
-          isError = excelObj[0][j];
-          break;
-        }
-        rdata[j] = formate(new Date(1900, 0, rdata[j] - 1), 'yyyy-MM-dd hh:mm:ss');
+      //防止出现空数据的情况
+      if (Object.keys(stu).length !== 1) {
+        allData.push(stu);
       }
-      stu[dataArray[j]] = rdata[j];
     }
-    allData.push(stu);
   }
   if (isError) {
-    await CONTENT_NOT_SUCCESS(ctx, isError + '列的数据格式存在问题，请检查后再导入');
+    await CONTENT_NOT_SUCCESS(ctx, isError);
   } else {
     if (allData.length) {
       //批量新增
       await dbCommon.bulkCreate(ctx, allData);
       await SUCCESS(ctx, '', file.originalname + '导入成功');
     } else {
-      await SUCCESS(ctx, '', file.originalname + '无可导入的数据');
+      await SUCCESS(ctx, '', file.originalname + '当前无可导入的数据，请检查格式或内容是否完整');
     }
   }
 });
