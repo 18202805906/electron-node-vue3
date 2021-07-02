@@ -22,7 +22,7 @@ class DbOperation {
       where,
       order: [['updateTime', 'DESC']],
       offset: offset ? offset : null,
-      size: size ? Number(size) : null,
+      limit: size ? Number(size) : null,
       //用于关联查询
       include
     });
@@ -106,17 +106,15 @@ class DbOperation {
       where
     });
     await SUCCESS(ctx, list, '查询成功');
-  };
+  }
   /**
    * 用于批量新增数据
    * @param {*} ctx koa回调参数
    */
-   async bulkCreate(ctx, params) {
+  async bulkCreate(ctx, params) {
     await models[this.tableName].bulkCreate(params);
     //await SUCCESS(ctx, {}, '批量新增成功');
   }
 }
-
-  
 
 module.exports = DbOperation;

@@ -28,7 +28,7 @@
         </a-space>
       </span>
     </a-card>
-    <a-card style="margin-top: 4px">
+    <a-card style="margin-top: 4px; overflow: scroll">
       <a-table :dataSource="dataList" :columns="columns" size="small" row-key="id" :loading="tableLoading" :pagination="pagination">
         <template #action="{ record }">
           <a-button @click="handleEdit(record)" type="link" size="small">编辑</a-button>
@@ -244,6 +244,7 @@ export default defineComponent({
       showTotal: (total) => `共 ${total} 条`,
       showSizeChange: (current, pageSize) => {
         params.pageSize = pageSize;
+        params.current = current;
         searchMethods.getData();
       },
       change: (val) => {
@@ -305,6 +306,8 @@ export default defineComponent({
           .then((res) => {
             if (res.code == 200) {
               pagination.total = res.data.total;
+              pagination.current = res.data.current;
+              pagination.pageSize = res.data.size;
               state.dataList = res.data.records;
             }
             tableLoading.value = false;

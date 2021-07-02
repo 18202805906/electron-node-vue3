@@ -251,6 +251,7 @@ export default defineComponent({
       showTotal: (total) => `共 ${total} 条`,
       onShowSizeChange: (current, pageSize) => {
         params.pageSize = pageSize;
+        params.current = current;
         searchMethods.getData();
       },
       onChange: (val) => {
@@ -342,6 +343,8 @@ export default defineComponent({
           .then((res) => {
             if (res.code == 200) {
               pagination.total = res.data.total;
+              pagination.current = res.data.current;
+              pagination.pageSize = res.data.pageSize;
               state.dataList = res.data.records;
             }
             tableLoading.value = false;

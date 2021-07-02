@@ -1,4 +1,4 @@
-const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
+//const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 const { resolve } = require('path');
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 const { VUE_APP_API_HOST, VUE_APP_API_PREFIX } = process.env;
@@ -117,9 +117,9 @@ module.exports = {
       }
     },
     plugins: [
-      new AntdDayjsWebpackPlugin()
+      //new AntdDayjsWebpackPlugin({ preset: 'antdv3' })
       // 去掉moment多余语言文件
-      // new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+      //new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
     ],
     externals: ['pg', 'sqlite3', 'tedious', 'pg-hstore']
   },
